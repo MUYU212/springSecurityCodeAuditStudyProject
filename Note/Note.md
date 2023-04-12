@@ -6,7 +6,7 @@ https://www.cnblogs.com/sherlson/articles/16220756.html
 
 新建一个空项目之后开始`New Module`
 
-![image-20230412144548212](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412144548212.png)
+![image-20230412144548212](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/Note/Note.assets/image-20230412144548212.png)
 
 在新生成的pom.xml中添加以下依赖
 
@@ -76,5 +76,5 @@ https://www.cnblogs.com/sherlson/articles/16220756.html
 
 配置好tomcat之后应该就可以运行，访问到Hello world就成功执行
 
-![image-20230412145437980](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412145437980.png)
+![image-20230412145437980](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/Note/Note.assets/image-20230412145437980.png)
 
