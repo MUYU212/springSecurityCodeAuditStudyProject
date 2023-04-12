@@ -58,7 +58,7 @@ https://www.cnblogs.com/sherlson/articles/16220756.html
 </web-app>
 ```
 
-在`resourse`目录下新建`strust.xml`文件，内容如下
+在`resourse`目录下新建`struts.xml`文件（这个名字很重要一开始我就是因为写错了一直访问不到接口的），内容如下
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,3 +78,48 @@ https://www.cnblogs.com/sherlson/articles/16220756.html
 
 ![image-20230412145437980](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412145437980.png)
 
+# 0x01 测试接口
+
+在main目录下新建一个java目录作为源代码路径，在java目录下新建com.red.action目录存放web接口代码，新建`HelloAction`
+
+```java
+package com.red.action;
+
+public class HelloAction {
+    public String sayHi(){
+        System.out.println("Hello Action");
+        return "success";
+    }
+}
+```
+
+然后修改`struts.xml`文件中的内容，添加以下的内容，这里class就对应了我们上边编写好的类，然后method参数对应要调用的方法，而name属性就是等下要访问的路径，里边的标签，代表结果返回success的话就跳转到hello.jsp，反之则到error.jsp中。
+
+```xml
+<package name="test" extends="struts-default">
+    <action name="sayHi" class="com.red.action.HelloAction" method="sayHi">
+        <result name="success">hello.jsp</result>
+        <result name="error">error.jsp</result>
+    </action>
+</package>
+```
+
+接下来在webapp中就新建`hello.jsp`和`error.jsp`了，内容师傅们自行定义吧，只要能区分出来两者的区别就好。
+
+编写完之后项目结构变成了这样
+
+![image-20230412174049602](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174049602.png)
+
+运行访问index接口
+
+![image-20230412174116872](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174116872.png)
+
+访问sayHi接口，成功跳转到`hello.jsp`中
+
+![image-20230412174156731](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174156731.png)
+
+而且确实也成功的执行了方法中的print方法
+
+![image-20230412174232285](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174232285.png)
+
+接下来要尝试接收请求中的参数，然后将参数进行对应的处理，突然想好了本项目的目标，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。
