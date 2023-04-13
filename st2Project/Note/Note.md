@@ -6,7 +6,7 @@ https://www.cnblogs.com/sherlson/articles/16220756.html
 
 新建一个空项目之后开始`New Module`
 
-![image-20230412144548212](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412144548212.png)
+![image-20230412144548212](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/st2Project/Note/Note.assets/image-20230412144548212.png)
 
 在新生成的pom.xml中添加以下依赖
 
@@ -76,7 +76,7 @@ https://www.cnblogs.com/sherlson/articles/16220756.html
 
 配置好tomcat之后应该就可以运行，访问到Hello world就成功执行
 
-![image-20230412145437980](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412145437980.png)
+![image-20230412145437980](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/st2Project/Note/Note.assets/image-20230412145437980.png)
 
 # 0x01 测试接口
 
@@ -108,18 +108,18 @@ public class HelloAction {
 
 编写完之后项目结构变成了这样
 
-![image-20230412174049602](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174049602.png)
+![image-20230412174049602](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/st2Project/Note/Note.assets/image-20230412174049602.png)
 
 运行访问index接口
 
-![image-20230412174116872](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174116872.png)
+![image-20230412174116872](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/st2Project/Note/Note.assets/image-20230412174116872.png)
 
 访问sayHi接口，成功跳转到`hello.jsp`中
 
-![image-20230412174156731](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174156731.png)
+![image-20230412174156731](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/st2Project/Note/Note.assets/image-20230412174156731.png)
 
 而且确实也成功的执行了方法中的print方法
 
-![image-20230412174232285](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/Note/Note.assets/image-20230412174232285.png)
+![image-20230412174232285](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/st2Project/Note/Note.assets/image-20230412174232285.png)
 
 接下来要尝试接收请求中的参数，然后将参数进行对应的处理，突然想好了本项目的目标，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。
