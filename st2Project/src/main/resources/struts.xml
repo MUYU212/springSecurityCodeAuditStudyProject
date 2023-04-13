@@ -8,10 +8,13 @@
             <result>index.jsp</result>
         </action>
     </package>
-    <package name="test" extends="struts-default">
+    <package name="test" extends="struts-default" namespace="/test">
         <action name="sayHi" class="com.red.action.HelloAction" method="sayHi">
-            <result name="success">hello.jsp</result>
-            <result name="error">error.jsp</result>
+            <result name="success">/hello.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="login" class="com.red.action.LoginAction" method="login">
+            <result name="login">/login.jsp</result>
         </action>
     </package>
 </struts>

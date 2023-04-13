@@ -122,4 +122,25 @@ public class HelloAction {
 
 ![image-20230412174232285](https://raw.githubusercontent.com/MUYU212/springSecurityCodeAuditStudyProject/main/st2Project/Note/Note.assets/image-20230412174232285.png)
 
+在`struts.xml`文件中存在一个`namespace`的属性，这个属性也会帮助我们寻找接口路径，我们修改文件,这里我做了两处修改，一处是加上了namespace属性，一处是将`<result>`标签中的jsp文件指定了根路径下的jsp文件，如果不指定的话，访问接口会找到/test/hello.jsp文件去,所以这里要指定上文件，重新运行代码
+
+```xml
+<package name="test" extends="struts-default" namespace="/test">
+    <action name="sayHi" class="com.red.action.HelloAction" method="sayHi">
+        <result name="success">/hello.jsp</result>
+        <result name="error">/error.jsp</result>
+    </action>
+</package>
+```
+
+原本访问http://localhost:8081/sayHi.action就可以找到现在会提示404
+
+![image-20230413181914713](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230413181914713.png)
+
+需要访问http://localhost:8081/test/sayHi.action
+
+![image-20230413181936868](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230413181936868.png)
+
+
+
 接下来要尝试接收请求中的参数，然后将参数进行对应的处理，突然想好了本项目的目标，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。
