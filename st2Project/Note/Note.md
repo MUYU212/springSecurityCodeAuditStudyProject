@@ -141,6 +141,107 @@ public class HelloAction {
 
 ![image-20230413181936868](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230413181936868.png)
 
+# 0x02 接收请求参数
 
+因为多数项目都是采用MVC架构的我们就选择使用实体类来接受前端请求的参数的方式，这里用到了`lombok`插件（非必要），自行学习其使用方法
+
+在源代码文件夹中的`action`目录下新建一个`pojo`目录用来存放实体类，新建一个`User.java`文件并且属性配置好。
+
+```java
+package com.red.pojo;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class User {
+    private String username;
+    private String password;
+    private int age;
+}
+```
+
+在`action`文件夹下新建一个`LoginAction.java`文件，这里记得继承`ActionSupport`类，以及实现`ModelDriven<User>`接口，这里尖括号里是填写我们新定义的类（操作是这么操作，但是原理没仔细研究），然后一定要写一个`getModel()`方法，返回一个user对象才可以不报错。
+
+```java
+package com.red.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.red.pojo.User;
+
+public class LoginAction extends ActionSupport implements ModelDriven<User> {
+
+    private User user = new User();
+    public String login(){
+
+        return "login";
+    }
+    public String logon(){
+        System.out.println(user.getUsername()+"====="+user.getPassword());
+        if (user.getPassword().equals("123456")){
+            return "success";
+        }
+        return "error";
+    }
+    public User getModel() {
+        return user;
+    }
+}
+```
+
+之后在`webapps`目录下新建`login.jsp`  `success.jsp`两个文件，成功页面的内容自定义就好，`login.jsp`的内容如下，其中存在一个登录框，然后发送请求到/user/logon.action中。
+
+```jsp
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Login JSP</title>
+</head>
+<body>
+<h2>Login JSP</h2>
+<form action="/user/logon.action" method="post">
+  <input type="text" name="username"></br>
+  <input type="password" name="password"></br>
+  <button>登录</button>
+</form>
+</body>
+</html>
+```
+
+最后就是修改`struts.xml`文件，这里`namespace`我更换成了`/user`，然后声明了两个接口一个`login`接口是跳转到`login.jsp`的作用，另一个是接收提交数据的。（我看有一些代码里是这么实现登录的，但是觉得有点奇怪，感觉这么写很麻烦）
+
+```xml
+<package name="user" extends="struts-default" namespace="/user">
+    <action name="sayHi" class="com.red.action.HelloAction" method="sayHi">
+        <result name="success">/hello.jsp</result>
+        <result name="error">/error.jsp</result>
+    </action>
+    <action name="login" class="com.red.action.LoginAction" method="login">
+        <result name="login">/login.jsp</result>
+    </action>
+    <action name="logon" class="com.red.action.LoginAction" method="logon">
+        <result name="success">/success.jsp</result>
+        <result name="error">/error.jsp</result>
+    </action>
+</package>
+```
+
+那么项目的目录结构就变成了以下这样。
+
+![image-20230414112931990](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414112931990.png)
+
+运行系统，访问http://localhost:8081/user/login，成功访问到，根据我们上边的代码逻辑，密码输入123456就可以成功跳转到成功页面
+
+![image-20230414122023698](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414122023698.png)
+
+成功跳转并且，控制台也打印到对应的信息了。
+
+![image-20230414122116172](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414122116172.png)
+
+![image-20230414122150324](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414122150324.png)
 
 接下来要尝试接收请求中的参数，然后将参数进行对应的处理，突然想好了本项目的目标，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。

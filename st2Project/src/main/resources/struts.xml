@@ -8,13 +8,17 @@
             <result>index.jsp</result>
         </action>
     </package>
-    <package name="test" extends="struts-default" namespace="/test">
+    <package name="user" extends="struts-default" namespace="/user">
         <action name="sayHi" class="com.red.action.HelloAction" method="sayHi">
             <result name="success">/hello.jsp</result>
             <result name="error">/error.jsp</result>
         </action>
         <action name="login" class="com.red.action.LoginAction" method="login">
             <result name="login">/login.jsp</result>
+        </action>
+        <action name="logon" class="com.red.action.LoginAction" method="logon">
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
         </action>
     </package>
 </struts>

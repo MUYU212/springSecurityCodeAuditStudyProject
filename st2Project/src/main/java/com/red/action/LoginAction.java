@@ -8,8 +8,15 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 
     private User user = new User();
     public String login(){
-        System.out.println(user.getUsername()+"====="+user.getPassword());
+
         return "login";
+    }
+    public String logon(){
+        System.out.println(user.getUsername()+"====="+user.getPassword());
+        if (user.getPassword().equals("123456")){
+            return "success";
+        }
+        return "error";
     }
     public User getModel() {
         return user;
