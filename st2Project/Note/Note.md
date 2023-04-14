@@ -135,11 +135,11 @@ public class HelloAction {
 
 原本访问http://localhost:8081/sayHi.action就可以找到现在会提示404
 
-![image-20230413181914713](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230413181914713.png)
+![image-20230413181914713](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230413181914713.png?raw=true)
 
 需要访问http://localhost:8081/test/sayHi.action
 
-![image-20230413181936868](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230413181936868.png)
+![image-20230413181936868](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230413181936868.png?raw=true)
 
 # 0x02 接收请求参数
 
@@ -232,16 +232,16 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 
 那么项目的目录结构就变成了以下这样。
 
-![image-20230414112931990](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414112931990.png)
+![image-20230414112931990](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230414112931990.png?raw=true)
 
 运行系统，访问http://localhost:8081/user/login，成功访问到，根据我们上边的代码逻辑，密码输入123456就可以成功跳转到成功页面
 
-![image-20230414122023698](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414122023698.png)
+![image-20230414122023698](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230414122023698.png?raw=true)
 
 成功跳转并且，控制台也打印到对应的信息了。
 
-![image-20230414122116172](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414122116172.png)
+![image-20230414122116172](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230414122116172.png?raw=true)
 
-![image-20230414122150324](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230414122150324.png)
+![image-20230414122150324](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230414122150324.png?raw=true)
 
 接下来要尝试接收请求中的参数，然后将参数进行对应的处理，突然想好了本项目的目标，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。
