@@ -244,4 +244,35 @@ public class LoginAction extends ActionSupport implements ModelDriven<User> {
 
 ![image-20230414122150324](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230414122150324.png?raw=true)
 
-接下来要尝试接收请求中的参数，然后将参数进行对应的处理，突然想好了本项目的目标，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。
+# 0x03 Hibernate集成
+
+更新`pom.xml`导入依赖
+
+```xml
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>8.0.29</version>
+</dependency>
+<dependency>
+  <groupId>org.hibernate</groupId>
+  <artifactId>hibernate-core</artifactId>
+  <version>5.6.12.Final</version>
+</dependency>
+```
+
+然后我们更新一下`User.java`中的内容，因为我们的表结构中还是需要一个主键来查询用户的，所以要添加一个id属性(不贴代码了就)，之后在`resource`目录下新建一个`hibernate.cfg.xml`文件作为配置文件
+
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory></session-factory>
+</hibernate-configuration>
+```
+
+
+
+集成Hibernate实现简单的查询，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。

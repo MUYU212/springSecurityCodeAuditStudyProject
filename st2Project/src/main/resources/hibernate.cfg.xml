@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Admin@123</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernateDB?useUnicode=true&amp;characterEncoding=UTF-8</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!--打印sql语句-->
+        <property name="hibernate.show_sql">true</property>
+        <!--格式化sql-->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- 连接池中最大连接数 -->
+        <property name="hibernate.c3p0.max_size">20</property>
+        <!-- 连接池中最小连接数 -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <!--timeout这个表示连接池中的连接对象在多长时间没有使用过后，就应该被销毁-->
+        <property name="hibernate.c3p0.timeout">120</property>
+        <!-- 这个表示连接池检测线程多长时间检测一次池内的所有链接对象是否超时 -->
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+        <mapping resource="com/red/pojo/User.hbm.xml"/>
+    </session-factory>
+
+
+</hibernate-configuration>

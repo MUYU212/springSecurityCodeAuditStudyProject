@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.red.pojo.User" table="user">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="identity"></generator>
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="username"></column>
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password"></column>
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="age"></column>
+        </property>
+    </class>
+</hibernate-mapping>
