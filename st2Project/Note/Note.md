@@ -383,9 +383,9 @@ public class Tests {
 
 执行结果如下，可以看到成功执行了SQL语句，我们数据库中也添加了数据。
 
-![image-20230417173150618](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230417173150618.png)
+![image-20230417173150618](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230417173150618.png?raw=true)
 
-![image-20230417173221113](/Users/red256/IdeaProjects/springSecurityCodeAuditStudyProject/st2Project/Note/Note.assets/image-20230417173221113.png)
+![image-20230417173221113](https://github.com/MUYU212/springSecurityCodeAuditStudyProject/blob/main/st2Project/Note/Note.assets/image-20230417173221113.png?raw=true)
 
 ## 3.查询数据
 
