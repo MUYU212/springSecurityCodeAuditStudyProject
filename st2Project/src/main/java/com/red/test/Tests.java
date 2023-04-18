@@ -4,6 +4,7 @@ import com.red.pojo.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.junit.Test;
 
 public class Tests {
@@ -23,11 +24,18 @@ public class Tests {
         session.close();
     }
 
-    @Test
-    public void selectTest(){
-        User user = session.get(User.class, 1);
+
+    public void selectTest(String username){
+        String hql = "from User where username='"+username+"'";
+        Query query = session.createQuery(hql);
+        User user = (User) query.uniqueResult();
         System.out.println(user);
-        session.beginTransaction().commit();
         session.close();
+    }
+
+    @Test
+    public void selectUser(){
+        String username = "admin' or '1'='1";
+        selectTest(username);
     }
 }

@@ -389,4 +389,16 @@ public class Tests {
 
 ## 3.查询数据
 
+### HQL注入
+
+https://www.freebuf.com/articles/web/287849.html
+
+HQL注入中存在漏洞的代码如下，hibernate存在注入的代码是这个，不需要select语句。
+
+```java
+Query query = session.createQuery("from User where name='"+queryString+"'");
+```
+
+
+
 集成Hibernate实现简单的查询，就是实现一个使用Hibernate进行简易的CURD操作，然后写一个Hibernate存在SQL注入的情况以及对应的修复方案，然后实现一个使用spring security进行鉴权的系统，该项目就算是告一段落了。
