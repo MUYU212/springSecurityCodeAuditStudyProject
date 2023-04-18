@@ -391,7 +391,38 @@ public class Tests {
 
 ### HQL注入
 
-hiber
+Hibernate不允许传入参数中存在`#`，否则会报错，这里修改`LoginAction`中的代码。新建一个`findUserByName`方法。这里首先我使用了HibernateUtil来获取到了session，其代码是自己写的方便获取session的工具类。代码在仓库中`utils`包下，自行查看。这里直接说该方法的逻辑，hql注入和sql注入还有一定的区别，这里并不需要select语句，直接使用from语句，拼接执行查询username以及password，如果查询到了结果就判断存在用户，返回success跳转到成功界面。
+
+```java
+public String logon() {
+
+    String result = findUsersByName(user.getUsername(), user.getPassword());
+    return result;
+    
+}
+
+public String findUsersByName(String name, String password) {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    //        String sql = "select * from user where username='" + name + "'";
+    String hql = "from User where username='" + name + "'" + " and password='" + password + "'";
+    try {
+        Query query = session.createQuery(hql);
+        String Qstring = query.getQueryString();
+        System.out.println(Qstring);
+        List<User> users = query.getResultList();;
+        if (users != null && !users.isEmpty())
+            users.forEach(user -> System.out.println(user));
+        return "success";
+    } catch (Exception e) {
+        System.out.println("=====something error=====");
+        System.out.println(hql);
+        return "error";
+    }
+    //        List<User> resultList = query.getResultList();
+}
+```
+
+
 
 HQL注入中存在漏洞的代码如下，hibernate存在注入的代码是这个，不需要select语句。
 
