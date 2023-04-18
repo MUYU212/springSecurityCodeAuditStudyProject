@@ -391,7 +391,7 @@ public class Tests {
 
 ### HQL注入
 
-https://www.freebuf.com/articles/web/287849.html
+hiber
 
 HQL注入中存在漏洞的代码如下，hibernate存在注入的代码是这个，不需要select语句。
 
