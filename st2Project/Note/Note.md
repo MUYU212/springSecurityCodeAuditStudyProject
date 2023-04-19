@@ -418,17 +418,10 @@ public String findUsersByName(String name, String password) {
         System.out.println(hql);
         return "error";
     }
-    //        List<User> resultList = query.getResultList();
 }
 ```
 
 
-
-HQL注入中存在漏洞的代码如下，hibernate存在注入的代码是这个，不需要select语句。
-
-```java
-Query query = session.createQuery("from User where name='"+queryString+"'");
-```
 
 
 
