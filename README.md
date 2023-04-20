@@ -11,3 +11,4 @@
 - 实现spring security的拦截器和拦截方法。
   - 针对admin用户以及user用户的鉴权做到
 - 实现FreeMarker构建项目，探究一下原理。
+- 集成一下ckfinder/ckeditor
